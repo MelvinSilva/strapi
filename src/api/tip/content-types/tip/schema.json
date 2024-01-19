@@ -1,0 +1,60 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tips",
+  "info": {
+    "singularName": "tip",
+    "pluralName": "tips",
+    "displayName": "Les bons plans",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "ville": {
+      "type": "string"
+    },
+    "departement": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "enseigne": {
+      "type": "string"
+    },
+    "reduction": {
+      "type": "string"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "verifier": {
+      "type": "boolean"
+    },
+    "disponible": {
+      "type": "boolean"
+    },
+    "adresse": {
+      "type": "text"
+    },
+    "date_verification": {
+      "type": "string"
+    },
+    "tag": {
+      "type": "string"
+    },
+    "demande_modification": {
+      "type": "text"
+    }
+  }
+}

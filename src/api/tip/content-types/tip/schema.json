@@ -42,7 +42,8 @@
       "type": "boolean"
     },
     "disponible": {
-      "type": "boolean"
+      "type": "boolean",
+      "default": true
     },
     "adresse": {
       "type": "text"

@@ -717,7 +717,8 @@ export interface ApiRatingRating extends Schema.CollectionType {
   info: {
     singularName: 'rating';
     pluralName: 'ratings';
-    displayName: 'Les avis';
+    displayName: 'Notes clients';
+    description: '';
   };
   options: {
     draftAndPublish: true;

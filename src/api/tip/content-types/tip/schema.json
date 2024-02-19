@@ -56,6 +56,9 @@
     },
     "demande_modification": {
       "type": "text"
+    },
+    "user_info": {
+      "type": "text"
     }
   }
 }

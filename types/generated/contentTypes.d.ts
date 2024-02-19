@@ -768,6 +768,7 @@ export interface ApiTipTip extends Schema.CollectionType {
     date_verification: Attribute.String;
     tag: Attribute.String;
     demande_modification: Attribute.Text;
+    user_info: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

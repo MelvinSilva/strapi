@@ -763,7 +763,7 @@ export interface ApiTipTip extends Schema.CollectionType {
     reduction: Attribute.String;
     image: Attribute.Media;
     verifier: Attribute.Boolean;
-    valide: Attribute.Boolean & Attribute.DefaultTo<true>;
+    valide: Attribute.Boolean & Attribute.Required & Attribute.DefaultTo<false>;
     adresse: Attribute.Text;
     date_verification: Attribute.String;
     tag: Attribute.String;

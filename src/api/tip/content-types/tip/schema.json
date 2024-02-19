@@ -43,8 +43,7 @@
     },
     "valide": {
       "type": "boolean",
-      "default": true,
-      "required": true
+      "required": false
     },
     "adresse": {
       "type": "text"

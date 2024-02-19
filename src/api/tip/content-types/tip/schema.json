@@ -41,7 +41,7 @@
     "verifier": {
       "type": "boolean"
     },
-    "disponible": {
+    "valide": {
       "type": "boolean",
       "default": true
     },

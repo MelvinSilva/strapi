@@ -677,41 +677,6 @@ export interface PluginI18NLocale extends Schema.CollectionType {
   };
 }
 
-export interface ApiPropositionProposition extends Schema.CollectionType {
-  collectionName: 'propositions';
-  info: {
-    singularName: 'proposition';
-    pluralName: 'propositions';
-    displayName: 'Les propositions';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    nom: Attribute.String;
-    cp: Attribute.String;
-    description: Attribute.Text;
-    ville: Attribute.String;
-    enseigne: Attribute.String;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::proposition.proposition',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::proposition.proposition',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface ApiRatingRating extends Schema.CollectionType {
   collectionName: 'ratings';
   info: {
@@ -795,7 +760,6 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'plugin::i18n.locale': PluginI18NLocale;
-      'api::proposition.proposition': ApiPropositionProposition;
       'api::rating.rating': ApiRatingRating;
       'api::tip.tip': ApiTipTip;
     }

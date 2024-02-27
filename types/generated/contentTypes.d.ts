@@ -413,13 +413,14 @@ export interface ApiTipTip extends Schema.CollectionType {
     reduction: Attribute.String;
     image: Attribute.Media;
     verifier: Attribute.Boolean;
-    valide: Attribute.Boolean;
+    valider: Attribute.Boolean;
     adresse: Attribute.Text;
     date_verification: Attribute.String;
     tag: Attribute.String;
     demande_modification: Attribute.Text;
     user_info: Attribute.Text & Attribute.Private;
     historique_modification: Attribute.Text & Attribute.Private;
+    expirer: Attribute.Boolean;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

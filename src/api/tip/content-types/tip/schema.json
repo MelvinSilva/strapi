@@ -58,7 +58,12 @@
       "type": "text"
     },
     "user_info": {
-      "type": "text"
+      "type": "text",
+      "private": true
+    },
+    "historique_modification": {
+      "type": "text",
+      "private": true
     }
   }
 }

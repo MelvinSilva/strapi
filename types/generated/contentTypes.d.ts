@@ -362,75 +362,6 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
-export interface ApiRatingRating extends Schema.CollectionType {
-  collectionName: 'ratings';
-  info: {
-    singularName: 'rating';
-    pluralName: 'ratings';
-    displayName: 'Notes clients';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    note: Attribute.Integer;
-    commentaire: Attribute.Text;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::rating.rating',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::rating.rating',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiTipTip extends Schema.CollectionType {
-  collectionName: 'tips';
-  info: {
-    singularName: 'tip';
-    pluralName: 'tips';
-    displayName: 'Les bons plans';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    ville: Attribute.String;
-    departement: Attribute.String;
-    description: Attribute.Text;
-    enseigne: Attribute.String;
-    reduction: Attribute.String;
-    image: Attribute.Media;
-    verifier: Attribute.Boolean;
-    valider: Attribute.Boolean;
-    adresse: Attribute.Text;
-    date_verification: Attribute.String;
-    tag: Attribute.String;
-    demande_modification: Attribute.Text;
-    user_info: Attribute.Text & Attribute.Private;
-    historique_modification: Attribute.Text & Attribute.Private;
-    expirer: Attribute.Boolean;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<'api::tip.tip', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<'api::tip.tip', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-  };
-}
-
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: 'files';
   info: {
@@ -746,6 +677,75 @@ export interface PluginI18NLocale extends Schema.CollectionType {
   };
 }
 
+export interface ApiRatingRating extends Schema.CollectionType {
+  collectionName: 'ratings';
+  info: {
+    singularName: 'rating';
+    pluralName: 'ratings';
+    displayName: 'Notes clients';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    note: Attribute.Integer;
+    commentaire: Attribute.Text;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::rating.rating',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::rating.rating',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiTipTip extends Schema.CollectionType {
+  collectionName: 'tips';
+  info: {
+    singularName: 'tip';
+    pluralName: 'tips';
+    displayName: 'Les bons plans';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    ville: Attribute.String;
+    departement: Attribute.String;
+    description: Attribute.Text;
+    enseigne: Attribute.String;
+    reduction: Attribute.String;
+    image: Attribute.Media;
+    verifier: Attribute.Boolean;
+    valider: Attribute.Boolean;
+    adresse: Attribute.Text;
+    date_verification: Attribute.String;
+    tag: Attribute.String;
+    demande_modification: Attribute.Text;
+    user_info: Attribute.Text & Attribute.Private;
+    historique_modification: Attribute.Text & Attribute.Private;
+    expirer: Attribute.Boolean;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::tip.tip', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::tip.tip', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -756,14 +756,14 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
-      'api::rating.rating': ApiRatingRating;
-      'api::tip.tip': ApiTipTip;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'plugin::i18n.locale': PluginI18NLocale;
+      'api::rating.rating': ApiRatingRating;
+      'api::tip.tip': ApiTipTip;
     }
   }
 }

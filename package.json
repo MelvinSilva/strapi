@@ -18,7 +18,7 @@
     "@strapi/plugin-users-permissions": "4.15.4",
     "@strapi/provider-upload-cloudinary": "^4.15.4",
     "@strapi/strapi": "4.15.4",
-    "pg": "8.11.3",
+    "pg": "8.11.5",
     "strapi-plugin-import-export-entries": "^1.23.1"
   },
   "engines": {

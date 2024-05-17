@@ -17,6 +17,9 @@
     },
     "commentaire": {
       "type": "text"
+    },
+    "reponse": {
+      "type": "string"
     }
   }
 }

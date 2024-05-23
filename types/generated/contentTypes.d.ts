@@ -691,7 +691,7 @@ export interface ApiRatingRating extends Schema.CollectionType {
   attributes: {
     note: Attribute.Integer;
     commentaire: Attribute.Text;
-    reponse: Attribute.String;
+    reponse: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

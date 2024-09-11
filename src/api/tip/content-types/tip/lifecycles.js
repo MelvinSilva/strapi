@@ -17,12 +17,12 @@ module.exports = {
 
       const currentHistorique = existingDeal.historique_modification || "";
 
-      // Concaténer la nouvelle modification avec l'historique existant
+      // Concaténer la nouvelle modification AVANT l'historique existant
       const updatedHistorique = currentHistorique
-        ? `${currentHistorique}\n${newModification}`
+        ? `${newModification}\n${currentHistorique}` // Nouvelle modification en haut
         : newModification;
 
-      // Mettre à jour l'historique cumulé dans l'objet data (avant que Strapi ne l'enregistre dans la base)
+      // Mettre à jour l'historique cumulé dans l'objet data
       data.historique_modification = updatedHistorique;
     }
   },

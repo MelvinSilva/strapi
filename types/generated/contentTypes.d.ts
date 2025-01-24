@@ -677,6 +677,39 @@ export interface PluginI18NLocale extends Schema.CollectionType {
   };
 }
 
+export interface ApiAnnonceAnnonce extends Schema.CollectionType {
+  collectionName: 'annonces';
+  info: {
+    singularName: 'annonce';
+    pluralName: 'annonces';
+    displayName: 'Annonces';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String;
+    message: Attribute.Text;
+    image: Attribute.Media;
+    date: Attribute.Date;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::annonce.annonce',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::annonce.annonce',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiRatingRating extends Schema.CollectionType {
   collectionName: 'ratings';
   info: {
@@ -763,6 +796,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'plugin::i18n.locale': PluginI18NLocale;
+      'api::annonce.annonce': ApiAnnonceAnnonce;
       'api::rating.rating': ApiRatingRating;
       'api::tip.tip': ApiTipTip;
     }

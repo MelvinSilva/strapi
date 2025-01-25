@@ -15,8 +15,7 @@
     "isMaintenance": {
       "type": "boolean",
       "default": true,
-      "required": true,
-      "private": true
+      "required": true
     },
     "message": {
       "type": "blocks",

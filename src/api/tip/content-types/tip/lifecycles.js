@@ -17,13 +17,23 @@ module.exports = {
 
       const currentHistorique = existingDeal.historique_modification || "";
 
-      // Concaténer la nouvelle modification AVANT l'historique existant
-      const updatedHistorique = currentHistorique
-        ? `${newModification}\n${currentHistorique}` // Nouvelle modification en haut
-        : newModification;
+      // Vérifier si la nouvelle modification existe déjà dans l'historique
+      const isDuplicate = currentHistorique
+        .split("\n")
+        .some((entry) => entry.trim() === newModification.trim());
 
-      // Mettre à jour l'historique cumulé dans l'objet data
-      data.historique_modification = updatedHistorique;
+      if (!isDuplicate) {
+        // Ajouter la nouvelle modification en haut
+        const updatedHistorique = currentHistorique
+          ? `${newModification}\n${currentHistorique}`
+          : newModification;
+
+        // Mettre à jour l'historique cumulé dans l'objet data
+        data.historique_modification = updatedHistorique;
+      } else {
+        // Pas de modification si déjà présent
+        data.historique_modification = currentHistorique;
+      }
     }
   },
 };

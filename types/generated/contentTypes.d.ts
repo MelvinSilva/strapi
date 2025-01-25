@@ -725,7 +725,6 @@ export interface ApiMaintenanceMaintenance extends Schema.CollectionType {
   attributes: {
     isMaintenance: Attribute.Boolean &
       Attribute.Required &
-      Attribute.Private &
       Attribute.DefaultTo<true>;
     message: Attribute.Blocks & Attribute.Required;
     title: Attribute.String & Attribute.Required;

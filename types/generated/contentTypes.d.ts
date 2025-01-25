@@ -717,14 +717,18 @@ export interface ApiMaintenanceMaintenance extends Schema.CollectionType {
     singularName: 'maintenance';
     pluralName: 'maintenances';
     displayName: 'Maintenance';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    isMaintenance: Attribute.Boolean;
-    message: Attribute.Blocks;
-    title: Attribute.String;
+    isMaintenance: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.Private &
+      Attribute.DefaultTo<true>;
+    message: Attribute.Blocks & Attribute.Required;
+    title: Attribute.String & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

@@ -4,7 +4,8 @@
   "info": {
     "singularName": "maintenance",
     "pluralName": "maintenances",
-    "displayName": "Maintenance"
+    "displayName": "Maintenance",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -12,13 +13,18 @@
   "pluginOptions": {},
   "attributes": {
     "isMaintenance": {
-      "type": "boolean"
+      "type": "boolean",
+      "default": true,
+      "required": true,
+      "private": true
     },
     "message": {
-      "type": "blocks"
+      "type": "blocks",
+      "required": true
     },
     "title": {
-      "type": "string"
+      "type": "string",
+      "required": true
     }
   }
 }

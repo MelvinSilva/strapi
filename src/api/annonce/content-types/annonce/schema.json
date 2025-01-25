@@ -4,7 +4,8 @@
   "info": {
     "singularName": "annonce",
     "pluralName": "annonces",
-    "displayName": "Annonces"
+    "displayName": "Annonces",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -14,21 +15,17 @@
     "title": {
       "type": "string"
     },
-    "message": {
-      "type": "text"
-    },
     "image": {
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ],
       "type": "media",
-      "multiple": false
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images", "files", "videos", "audios"]
     },
     "date": {
       "type": "date"
+    },
+    "message": {
+      "type": "text"
     }
   }
 }

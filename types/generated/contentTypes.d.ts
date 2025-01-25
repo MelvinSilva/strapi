@@ -683,15 +683,16 @@ export interface ApiAnnonceAnnonce extends Schema.CollectionType {
     singularName: 'annonce';
     pluralName: 'annonces';
     displayName: 'Annonces';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
     title: Attribute.String;
-    message: Attribute.Text;
     image: Attribute.Media;
     date: Attribute.Date;
+    message: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -703,6 +704,38 @@ export interface ApiAnnonceAnnonce extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::annonce.annonce',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiMaintenanceMaintenance extends Schema.CollectionType {
+  collectionName: 'maintenances';
+  info: {
+    singularName: 'maintenance';
+    pluralName: 'maintenances';
+    displayName: 'Maintenance';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    isMaintenance: Attribute.Boolean;
+    message: Attribute.Blocks;
+    title: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::maintenance.maintenance',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::maintenance.maintenance',
       'oneToOne',
       'admin::user'
     > &
@@ -797,6 +830,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'plugin::i18n.locale': PluginI18NLocale;
       'api::annonce.annonce': ApiAnnonceAnnonce;
+      'api::maintenance.maintenance': ApiMaintenanceMaintenance;
       'api::rating.rating': ApiRatingRating;
       'api::tip.tip': ApiTipTip;
     }

@@ -806,6 +806,7 @@ export interface ApiTipTip extends Schema.CollectionType {
     user_info: Attribute.Text & Attribute.Private;
     historique_modification: Attribute.Text & Attribute.Private;
     expirer: Attribute.Boolean;
+    score: Attribute.Integer;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

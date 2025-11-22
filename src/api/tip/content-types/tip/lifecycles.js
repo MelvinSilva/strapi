@@ -17,13 +17,20 @@ module.exports = {
 
       const currentHistorique = existingDeal.historique_modification || "";
 
-      // Concaténer la nouvelle modification AVANT l'historique existant
-      const updatedHistorique = currentHistorique
-        ? `${newModification}\n${currentHistorique}` // Nouvelle modification en haut
-        : newModification;
+      // FIX: Vérifier si la nouvelle modification contient DÉJÀ l'historique actuel.
+      // Cela arrive quand on sauvegarde depuis le panel Admin : Strapi renvoie tout le contenu.
+      // Si c'est le cas, on ne fait rien (on garde newModification tel quel).
+      if (currentHistorique && newModification.includes(currentHistorique)) {
+        // Rien à faire, newModification est déjà complet
+      } else {
+        // Sinon, c'est une vraie nouvelle note (ou un delta), on concatène.
+        const updatedHistorique = currentHistorique
+          ? `${newModification}\n${currentHistorique}` // Nouvelle modification en haut
+          : newModification;
 
-      // Mettre à jour l'historique cumulé dans l'objet data
-      data.historique_modification = updatedHistorique;
+        // Mettre à jour l'historique cumulé dans l'objet data
+        data.historique_modification = updatedHistorique;
+      }
     }
   },
 };

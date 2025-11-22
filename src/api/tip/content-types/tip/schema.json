@@ -67,6 +67,9 @@
     },
     "expirer": {
       "type": "boolean"
+    },
+    "score": {
+      "type": "integer"
     }
   }
 }

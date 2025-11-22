@@ -9,33 +9,36 @@ module.exports = {
     const newModification = data.historique_modification;
 
     if (newModification) {
-      // Récupérer l'historique actuel
-      const existingDeal = await strapi.entityService.findOne(
-        "api::tip.tip",
-        dealId,
-      );
+      // Récupérer le contexte de la requête pour savoir d'où vient la modification
+      const ctx = strapi.requestContext.get();
+      
+      // Vérifier si l'utilisateur est un administrateur (Admin Panel)
+      const isAdmin = ctx?.state?.auth?.strategy?.name === 'admin';
 
-      const currentHistorique = existingDeal.historique_modification || "";
-
-      // Fonction utilitaire pour normaliser les chaînes (gérer les sauts de ligne \r\n vs \n et les espaces)
-      const normalize = (str) => (str || "").replace(/\r\n/g, "\n").trim();
-
-      const normNew = normalize(newModification);
-      const normCurrent = normalize(currentHistorique);
-
-      // FIX ROBUSTE : On compare les versions normalisées.
-      // Si la nouvelle modification contient déjà l'historique (au caractère près, sans compter les espaces/sauts de ligne invisibles),
-      // alors c'est que Strapi a renvoyé tout le contenu (cas du Save Admin).
-      if (currentHistorique && normNew.includes(normCurrent)) {
-        // On ne fait rien, pour éviter de dupliquer.
-        // On s'assure juste que data.historique_modification est bien défini (normalement oui).
+      if (isAdmin) {
+        // Si c'est l'Admin Panel, on fait confiance à ce qui est envoyé.
+        // L'admin voit déjà tout l'historique dans le champ, donc s'il sauvegarde,
+        // c'est qu'il envoie la version finale désirée. On ne concatène PAS.
+        // data.historique_modification est déjà correct.
       } else {
-        // Sinon, c'est un vrai ajout (ou l'historique était vide).
-        const updatedHistorique = currentHistorique
-          ? `${newModification}\n${currentHistorique}`
-          : newModification;
+        // Si c'est l'API (Client / Site Web), on suppose qu'on envoie seulement la nouvelle note.
+        // Donc on concatène avec l'existant.
+        
+        const existingDeal = await strapi.entityService.findOne(
+            "api::tip.tip",
+            dealId,
+        );
+        const currentHistorique = existingDeal.historique_modification || "";
+        
+        // On évite quand même les doublons exacts si le client renvoie tout par erreur,
+        // mais la logique principale est l'ajout.
+        if (!newModification.includes(currentHistorique)) {
+             const updatedHistorique = currentHistorique
+              ? `${newModification}\n${currentHistorique}`
+              : newModification;
 
-        data.historique_modification = updatedHistorique;
+            data.historique_modification = updatedHistorique;
+        }
       }
     }
   },

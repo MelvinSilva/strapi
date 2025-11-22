@@ -17,18 +17,24 @@ module.exports = {
 
       const currentHistorique = existingDeal.historique_modification || "";
 
-      // FIX: Vérifier si la nouvelle modification contient DÉJÀ l'historique actuel.
-      // Cela arrive quand on sauvegarde depuis le panel Admin : Strapi renvoie tout le contenu.
-      // Si c'est le cas, on ne fait rien (on garde newModification tel quel).
-      if (currentHistorique && newModification.includes(currentHistorique)) {
-        // Rien à faire, newModification est déjà complet
+      // Fonction utilitaire pour normaliser les chaînes (gérer les sauts de ligne \r\n vs \n et les espaces)
+      const normalize = (str) => (str || "").replace(/\r\n/g, "\n").trim();
+
+      const normNew = normalize(newModification);
+      const normCurrent = normalize(currentHistorique);
+
+      // FIX ROBUSTE : On compare les versions normalisées.
+      // Si la nouvelle modification contient déjà l'historique (au caractère près, sans compter les espaces/sauts de ligne invisibles),
+      // alors c'est que Strapi a renvoyé tout le contenu (cas du Save Admin).
+      if (currentHistorique && normNew.includes(normCurrent)) {
+        // On ne fait rien, pour éviter de dupliquer.
+        // On s'assure juste que data.historique_modification est bien défini (normalement oui).
       } else {
-        // Sinon, c'est une vraie nouvelle note (ou un delta), on concatène.
+        // Sinon, c'est un vrai ajout (ou l'historique était vide).
         const updatedHistorique = currentHistorique
-          ? `${newModification}\n${currentHistorique}` // Nouvelle modification en haut
+          ? `${newModification}\n${currentHistorique}`
           : newModification;
 
-        // Mettre à jour l'historique cumulé dans l'objet data
         data.historique_modification = updatedHistorique;
       }
     }

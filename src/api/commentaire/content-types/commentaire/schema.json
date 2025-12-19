@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "commentaires",
+  "info": {
+    "singularName": "commentaire",
+    "pluralName": "commentaires",
+    "displayName": "Commentaire"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "pseudo": {
+      "type": "string",
+      "required": true
+    },
+    "message": {
+      "type": "text",
+      "required": true
+    },
+    "reponse_admin": {
+      "type": "text",
+      "private": true
+    },
+    "bon_plan": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::tip.tip",
+      "inversedBy": "commentaires"
+    }
+  }
+}

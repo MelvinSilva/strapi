@@ -70,6 +70,12 @@
     },
     "score": {
       "type": "integer"
+    },
+    "commentaires": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::commentaire.commentaire",
+      "mappedBy": "bon_plan"
     }
   }
 }

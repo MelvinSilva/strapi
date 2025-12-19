@@ -711,6 +711,43 @@ export interface ApiAnnonceAnnonce extends Schema.CollectionType {
   };
 }
 
+export interface ApiCommentaireCommentaire extends Schema.CollectionType {
+  collectionName: 'commentaires';
+  info: {
+    singularName: 'commentaire';
+    pluralName: 'commentaires';
+    displayName: 'Commentaire';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    pseudo: Attribute.String & Attribute.Required;
+    message: Attribute.Text & Attribute.Required;
+    reponse_admin: Attribute.Text & Attribute.Private;
+    bon_plan: Attribute.Relation<
+      'api::commentaire.commentaire',
+      'manyToOne',
+      'api::tip.tip'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::commentaire.commentaire',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::commentaire.commentaire',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiMaintenanceMaintenance extends Schema.CollectionType {
   collectionName: 'maintenances';
   info: {
@@ -807,6 +844,11 @@ export interface ApiTipTip extends Schema.CollectionType {
     historique_modification: Attribute.Text & Attribute.Private;
     expirer: Attribute.Boolean;
     score: Attribute.Integer;
+    commentaires: Attribute.Relation<
+      'api::tip.tip',
+      'oneToMany',
+      'api::commentaire.commentaire'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -834,6 +876,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'plugin::i18n.locale': PluginI18NLocale;
       'api::annonce.annonce': ApiAnnonceAnnonce;
+      'api::commentaire.commentaire': ApiCommentaireCommentaire;
       'api::maintenance.maintenance': ApiMaintenanceMaintenance;
       'api::rating.rating': ApiRatingRating;
       'api::tip.tip': ApiTipTip;

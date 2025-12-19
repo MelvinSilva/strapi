@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "bannis",
+  "info": {
+    "singularName": "banni",
+    "pluralName": "bannis",
+    "displayName": "Bannis"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "address": {
+      "type": "text"
+    }
+  }
+}

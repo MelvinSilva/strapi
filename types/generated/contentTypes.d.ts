@@ -711,6 +711,36 @@ export interface ApiAnnonceAnnonce extends Schema.CollectionType {
   };
 }
 
+export interface ApiBanniBanni extends Schema.CollectionType {
+  collectionName: 'bannis';
+  info: {
+    singularName: 'banni';
+    pluralName: 'bannis';
+    displayName: 'Bannis';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    address: Attribute.Text;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::banni.banni',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::banni.banni',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiCommentaireCommentaire extends Schema.CollectionType {
   collectionName: 'commentaires';
   info: {
@@ -878,6 +908,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'plugin::i18n.locale': PluginI18NLocale;
       'api::annonce.annonce': ApiAnnonceAnnonce;
+      'api::banni.banni': ApiBanniBanni;
       'api::commentaire.commentaire': ApiCommentaireCommentaire;
       'api::maintenance.maintenance': ApiMaintenanceMaintenance;
       'api::rating.rating': ApiRatingRating;

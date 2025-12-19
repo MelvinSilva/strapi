@@ -4,7 +4,8 @@
   "info": {
     "singularName": "commentaire",
     "pluralName": "commentaires",
-    "displayName": "Commentaire"
+    "displayName": "Commentaire",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -20,8 +21,7 @@
       "required": true
     },
     "reponse_admin": {
-      "type": "text",
-      "private": true
+      "type": "text"
     },
     "bon_plan": {
       "type": "relation",

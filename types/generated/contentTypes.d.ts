@@ -717,6 +717,7 @@ export interface ApiCommentaireCommentaire extends Schema.CollectionType {
     singularName: 'commentaire';
     pluralName: 'commentaires';
     displayName: 'Commentaire';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -724,7 +725,7 @@ export interface ApiCommentaireCommentaire extends Schema.CollectionType {
   attributes: {
     pseudo: Attribute.String & Attribute.Required;
     message: Attribute.Text & Attribute.Required;
-    reponse_admin: Attribute.Text & Attribute.Private;
+    reponse_admin: Attribute.Text;
     bon_plan: Attribute.Relation<
       'api::commentaire.commentaire',
       'manyToOne',

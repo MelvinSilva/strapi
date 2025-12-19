@@ -731,6 +731,7 @@ export interface ApiCommentaireCommentaire extends Schema.CollectionType {
       'manyToOne',
       'api::tip.tip'
     >;
+    ip: Attribute.Text & Attribute.Private;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

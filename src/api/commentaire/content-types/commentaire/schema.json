@@ -28,6 +28,10 @@
       "relation": "manyToOne",
       "target": "api::tip.tip",
       "inversedBy": "commentaires"
+    },
+    "ip": {
+      "type": "text",
+      "private": true
     }
   }
 }

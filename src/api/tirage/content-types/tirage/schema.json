@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tirages",
+  "info": {
+    "singularName": "tirage",
+    "pluralName": "tirages",
+    "displayName": "Tirages"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "nom": {
+      "type": "string"
+    },
+    "prenom": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "optin_partenaires": {
+      "type": "boolean"
+    },
+    "ip": {
+      "type": "string"
+    }
+  }
+}

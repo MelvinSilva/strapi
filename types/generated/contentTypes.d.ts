@@ -891,6 +891,40 @@ export interface ApiTipTip extends Schema.CollectionType {
   };
 }
 
+export interface ApiTirageTirage extends Schema.CollectionType {
+  collectionName: 'tirages';
+  info: {
+    singularName: 'tirage';
+    pluralName: 'tirages';
+    displayName: 'Tirages';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    nom: Attribute.String;
+    prenom: Attribute.String;
+    email: Attribute.String;
+    optin_partenaires: Attribute.Boolean;
+    ip: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::tirage.tirage',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::tirage.tirage',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -913,6 +947,7 @@ declare module '@strapi/types' {
       'api::maintenance.maintenance': ApiMaintenanceMaintenance;
       'api::rating.rating': ApiRatingRating;
       'api::tip.tip': ApiTipTip;
+      'api::tirage.tirage': ApiTirageTirage;
     }
   }
 }

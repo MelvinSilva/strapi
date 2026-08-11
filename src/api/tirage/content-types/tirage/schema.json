@@ -4,7 +4,8 @@
   "info": {
     "singularName": "tirage",
     "pluralName": "tirages",
-    "displayName": "Tirages"
+    "displayName": "Tirages",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -24,7 +25,8 @@
       "type": "boolean"
     },
     "ip": {
-      "type": "string"
+      "type": "string",
+      "private": true
     }
   }
 }

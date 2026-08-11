@@ -873,7 +873,7 @@ export interface ApiTipTip extends Schema.CollectionType {
     tag: Attribute.String;
     demande_modification: Attribute.Text;
     user_info: Attribute.Text & Attribute.Private;
-    historique_modification: Attribute.Text & Attribute.Private;
+    historique_modification: Attribute.Text;
     expirer: Attribute.Boolean;
     score: Attribute.Integer;
     commentaires: Attribute.Relation<
@@ -897,6 +897,7 @@ export interface ApiTirageTirage extends Schema.CollectionType {
     singularName: 'tirage';
     pluralName: 'tirages';
     displayName: 'Tirages';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -906,7 +907,7 @@ export interface ApiTirageTirage extends Schema.CollectionType {
     prenom: Attribute.String;
     email: Attribute.String;
     optin_partenaires: Attribute.Boolean;
-    ip: Attribute.String;
+    ip: Attribute.String & Attribute.Private;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

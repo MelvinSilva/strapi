@@ -62,8 +62,7 @@
       "private": true
     },
     "historique_modification": {
-      "type": "text",
-      "private": true
+      "type": "text"
     },
     "expirer": {
       "type": "boolean"
